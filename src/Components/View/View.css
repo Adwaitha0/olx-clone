@@ -1,15 +1,54 @@
-.viewParentDiv {
-  padding-top: 4em;
+ .viewParentDiv {
+  padding-top: 7em;
   display: flex;
+   flex-wrap: wrap;
+  justify-content: space-between;
+  /* background-color: aqua; */
+  padding-left: 90px;
+  padding-right: 110px;
 }
-.viewParentDiv .imageShowDiv {
-  padding: 16px;
-  width: 70vw;
+
+ 
+
+
+.menuBar {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 5%;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #ddd;
+  z-index: 1000;
+  position: relative;
 }
-.viewParentDiv .imageShowDiv img {
-  width: 65vw;
-  height: 85vh;
+
+.menuBar .categoryMenu {
+  font-weight: bold;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
 }
+
+.menuBar .categoryMenu span {
+  margin-right: 16px;
+  font-weight: bolder;
+}
+
+.menuBar .otherQuickOptions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  font-size: 0.9rem;
+  color: #333;
+}
+.menuBar .otherQuickOptions span {
+  padding: 10px;
+}
+
+
+
+
 
 .viewParentDiv .rightSection {
   padding: 16px;
@@ -27,17 +66,21 @@
 }
 
 .viewParentDiv .rightSection .productDetails {
-  border: 1px solid black;
+  border: 1px solid rgb(78, 74, 74);
+  border-radius: 4px;
   padding: 6px;
-  border-radius: 6px;
-  margin-bottom: 2em;
+  margin-bottom: 1em;
   width: 100%;
+  padding-left: 20px;
+  padding-right: 10px;
 }
 
 .viewParentDiv .rightSection .contactDetails {
-  border: 1px solid black;
+  border: 1px solid rgb(78, 74, 74);
+  border-radius: 4px;
   padding: 6px;
-  border-radius: 6px;
+  padding-left: 20px;
+  padding-right: 10px;
 }
 
 .viewParentDiv .rightSection .contactDetails :first-child {
@@ -47,4 +90,32 @@
   color: #002f34;
   font-weight: 400;
   padding: 0;
+} 
+
+
+@media (max-width: 768px) {
+  .viewParentDiv {
+    flex-direction: column;
+    align-items: center;
+    padding: 1em 5%;
+  }
+
+  .viewParentDiv .imageShowDiv {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    padding: 1em 0;
+  }
+
+  .viewParentDiv .imageShowDiv img {
+    width: 80%;
+    height: auto;
+  }
+
+  .viewParentDiv .rightSection {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 1em;
+    padding: 1em 0;
+  }
 }

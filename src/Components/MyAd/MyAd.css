@@ -1,0 +1,85 @@
+.myAdsParentDiv {
+  margin: 16px 16px 24px;
+  padding: 16px 7% 32px;
+  background-color: #f9f9f9;
+  border-radius: 4px;
+}
+
+.myAdsParentDiv h2 {
+  font-size: 24px;
+  color: #002f34;
+  margin-bottom: 16px;
+  padding-left: 7%;
+}
+
+.adsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding-left: 7%;
+  padding-right: 7%;
+  justify-content: flex-start;
+}
+
+.adCard {
+  background: white;
+  border-radius: 4px;
+  box-shadow: 0 1px 4px rgb(0 0 0 / 0.1);
+  width: 222px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: box-shadow 0.2s ease;
+}
+
+.adCard:hover {
+  box-shadow: 0 4px 12px rgb(0 0 0 / 0.2);
+}
+
+.adImage {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  background-color: #ddd;
+}
+
+.adDetails {
+  padding: 12px 14px;
+  flex-grow: 1;
+  color: #002f34;
+}
+
+.adDetails h3 {
+  margin: 0 0 8px 0;
+  font-size: 18px;
+}
+
+.adDetails p {
+  margin: 4px 0;
+  font-size: 14px;
+  color: #555;
+}
+
+.adActions {
+  display: flex;
+  justify-content: space-around;
+  padding: 12px 0;
+  border-top: 1px solid #eee;
+  background-color: #fafafa;
+}
+
+.adActions button {
+  background-color: #002f34;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 3px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.adActions button:hover {
+  background-color: #00514e;
+}

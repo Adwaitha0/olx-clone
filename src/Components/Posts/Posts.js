@@ -1,9 +1,44 @@
-import React from 'react';
 
+
+import React, { useEffect, useState, useContext } from 'react';
+import { FirebaseContext } from '../../store/Context';
+import { useNavigate } from 'react-router-dom'; 
 import Heart from '../../assets/Heart';
 import './Post.css';
+import { useLocation } from 'react-router-dom';
+
+function useQuery() {
+  return new URLSearchParams(useLocation().search);
+}
 
 function Posts() {
+  const navigate = useNavigate();
+  const [products, setProducts] = useState([]);
+  const { firebase } = useContext(FirebaseContext);
+  const query = useQuery().get('search')?.toLowerCase();
+
+  useEffect(() => {
+    firebase
+      .firestore()
+      .collection("products")
+      .get()
+      .then((snapshot) => {
+        const allProducts = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data()
+        }));
+        
+        if (query) {
+          const filtered = allProducts.filter((product) =>
+            product.name?.toLowerCase().includes(query) ||
+            product.category?.toLowerCase().includes(query)
+          );
+          setProducts(filtered);
+        } else {
+          setProducts(allProducts);
+        }
+      });
+  }, [firebase, query]);
 
   return (
     <div className="postParentDiv">
@@ -13,47 +48,30 @@ function Posts() {
           <span>View more</span>
         </div>
         <div className="cards">
-          <div
-            className="card"
-          >
-            <div className="favorite">
-              <Heart></Heart>
+          {products.map((product) => (
+            <div className="card" key={product.id} 
+              onClick={() => navigate(`/product-detail`, { state: { product } })}
+             // onClick={() => navigate(`/product/${product.id}`, { state: { product } })}
+           >
+              <div className="favorite">
+                <Heart />
+              </div>
+              <div className="image">
+                <img src={product.imageUrl} alt={product.name} />
+              </div>
+              <div className="content">
+                <p className="rate">&#x20B9; {product.price}</p>
+                <span className="kilometer">{product.category}</span>
+                <p className="name"> {product.name}</p>
+              </div>
+              <div className="date">
+                <span>{product.createdAt}</span>
+              </div>
             </div>
-            <div className="image">
-              <img src="../../../Images/R15V3.jpg" alt="" />
-            </div>
-            <div className="content">
-              <p className="rate">&#x20B9; 250000</p>
-              <span className="kilometer">Two Wheeler</span>
-              <p className="name"> YAMAHA R15V3</p>
-            </div>
-            <div className="date">
-              <span>Tue May 04 2021</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="recommendations">
-        <div className="heading">
-          <span>Fresh recommendations</span>
-        </div>
-        <div className="cards">
-          <div className="card">
-            <div className="favorite">
-              <Heart></Heart>
-            </div>
-            <div className="image">
-              <img src="../../../Images/R15V3.jpg" alt="" />
-            </div>
-            <div className="content">
-              <p className="rate">&#x20B9; 250000</p>
-              <span className="kilometer">Two Wheeler</span>
-              <p className="name"> YAMAHA R15V3</p>
-            </div>
-            <div className="date">
-              <span>10/5/2021</span>
-            </div>
-          </div>
+          ))}
+          {products.length === 0 && (
+            <p style={{ padding: '20px' }}>No products found matching your search.</p>
+          )}
         </div>
       </div>
     </div>

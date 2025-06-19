@@ -6,6 +6,7 @@ function Footer() {
   return (
     <div className="footerParentDiv">
       <div className="content">
+
         <div>
           <div className="heading">
             <p>POPULAR LOCATIONS</p>
@@ -19,6 +20,21 @@ function Footer() {
             </ul>
           </div>
         </div>
+
+        <div>
+          <div className="heading">
+            <p>TRENDING LOCATIONS</p>
+          </div>
+          <div className="list">
+            <ul>
+              <li>Bhubaneshwar</li>
+              <li>Hyderabad</li>
+              <li>Chandigrah</li>
+              <li>Nashik</li>
+            </ul>
+          </div>
+        </div>
+
         <div>
           <div className="heading">
             <p>ABOUT US</p>
@@ -32,18 +48,21 @@ function Footer() {
             </ul>
           </div>
         </div>
+
         <div>
           <div className="heading">
             <p>OLX</p>
           </div>
           <div className="list">
             <ul>
+              <li>Blog</li>
               <li>Help</li>
               <li>Sitemap</li>
               <li>Legal & Privacy information</li>
             </ul>
           </div>
         </div>
+
       </div>
       <div className="footer">
         <p>Other Countries Pakistan - South Africa - Indonesia</p>

@@ -3,21 +3,30 @@ import {FirebaseContext} from '../../store/Context'
 
 import Logo from '../../olx-logo.png';
 import './Login.css';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+
 
 function Login() {
   const [email,setEmail]=useState('');
   const [password,setPassword]=useState('')
   const {firebase}=useContext(FirebaseContext)
-  const history=useHistory()
+  const navigate = useNavigate();
   const handleLogin=(e)=>{
      e.preventDefault();
      firebase.auth().signInWithEmailAndPassword(email,password).then(()=>{
-      history.push('/')
+      navigate('/')
      }).catch((error)=>{
       alert(error.message)
      })
   }
+
+   const handleSignupRedirect = () => {
+    navigate('/signup');
+  };
+
+
+
+
   return (
     <div>
       <div className="loginParentDiv">
@@ -49,7 +58,7 @@ function Login() {
           <br />
           <button>Login</button>
         </form>
-        <a>Signup</a>
+        <a  onClick={handleSignupRedirect}>Signup</a>
       </div>
     </div>
   );

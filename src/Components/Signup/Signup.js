@@ -4,10 +4,12 @@ import React ,{useState, useContext} from 'react';
 import Logo from '../../olx-logo.png';
 import './Signup.css';
 import { FirebaseContext } from '../../store/Context';
-import { useHistory } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 export default function Signup() {
-  const history=useHistory()
+  // const history=useHistory()
+  const navigate = useNavigate();
   const [username,setUsername]=useState('');
   const [email,setEmail]=useState('');
   const [phone,setPhone]=useState('');
@@ -42,10 +44,10 @@ export default function Signup() {
       });
     })
     .then(() => {
-      history.push("/login");
+      // history.push("/login");
+      navigate("/login");
     })
     .catch((error) => {
-      // 🔥 Handle specific Firebase errors
       if (error.code === 'auth/email-already-in-use') {
         alert("This email is already registered. Please use a different email.");
       } else if (error.code === 'auth/invalid-email') {

@@ -1,8 +1,12 @@
 .moreView {
   margin: 16px 16px 24px;
-  padding: 16px 16px 32px;
-  background-color: #ebeeef;
+  /* padding: 16px 16px 32px; */
+  /* background-color: #ebeeef; */
   border-radius: 4px;
+  /* padding-left: 7%; */
+  padding-right: 7%;
+  padding-top: 2%;
+  padding-bottom: 2%;
 }
 
 .heading {
@@ -10,6 +14,8 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
+   padding-bottom: 2%;
+    padding-left: 7%;
 }
 .heading :first-child {
   font-size: 24px;
@@ -23,12 +29,15 @@
 
 .recommendations .cards {
   display: flex;
+  padding-left: 7%;
+  padding-right: 7%;
 }
 
 .moreView .cards {
   white-space: nowrap;
-  overflow-x: scroll;
+  overflow-x: auto;
   overflow-y: hidden;
+   padding-left: 7%;
 }
 
 .card {
@@ -36,7 +45,7 @@
   padding: 13px;
   max-width: 222px;
   width: 222px;
-  height: 270px;
+  height: 280px;
   display: inline-block;
   cursor: pointer;
 }
